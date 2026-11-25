@@ -135,3 +135,73 @@ body {
   position: relative;
   margin-left: var(--slide-spacing);
 }
+
+/* ── Theme tokens ───────────────────────────────────────────────────────────
+   Light is the :root default; `.dark` on <html> is set by ThemeProvider.
+   Channels are raw RGB triplets, not HSL, so each dark value is bit-exact to
+   the colour this project already used — converting through HSL rounds, and
+   #0B1120 came back as rgb(10,16,30). Dark therefore renders identically to
+   before the toggle existed:
+     content          #ffffff    content-bright  gray-100   content-secondary gray-200
+     content-tertiary gray-300   content-muted   gray-400   content-faint     gray-500
+     surface-base     #0B1120    surface-elevated #0E172A   surface-overlay   gray-950
+     surface-modal    gray-800   control-track   gray-700   menu-surface      gray-900/95
+     glass            black/45   glass-hover     black/60   shadow-strong     black/60
+   Two colours are deliberately theme-invariant:
+     bg-black/55, bg-black/80  fixed-dark scrims (over photographs, and the
+                               dialog backdrop over the dimmed page)
+     content-on-media          the text/hairline pair that sits ON those
+                               scrims — a scrim is a context, so its
+                               foreground must be pinned with it         */
+@layer base {
+  :root {
+    color-scheme: light;
+    --surface-base: 255 255 255;
+    --surface-elevated: 246 247 250;
+    --surface-overlay: 255 255 255;
+    --surface-modal: 255 255 255;
+    --content: 15 23 42;
+    --content-bright: 23 32 56;
+    --content-secondary: 51 65 85;
+    --content-tertiary: 71 85 105;
+    --content-muted: 90 100 118;
+    --content-faint: 120 130 148;
+    --control-track: 226 230 237;
+    --ink: var(--content);
+    --content-on-media: 255 255 255;
+    --glass: 255 255 255 / 0.82;
+    --glass-hover: 255 255 255 / 0.92;
+    --menu-surface: 255 255 255 / 0.96;
+    --shadow-strong: 15 23 42 / 0.18;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --surface-base: 11 17 32;
+    --surface-elevated: 14 23 42;
+    --surface-overlay: 3 7 18;
+    --surface-modal: 31 41 55;
+    --content: 255 255 255;
+    --content-bright: 243 244 246;
+    --content-secondary: 229 231 235;
+    --content-tertiary: 209 213 219;
+    --content-muted: 156 163 175;
+    --content-faint: 107 114 128;
+    --control-track: 55 65 81;
+    --ink: var(--content);
+    --content-on-media: 255 255 255;
+    --glass: 0 0 0 / 0.45;
+    --glass-hover: 0 0 0 / 0.6;
+    --menu-surface: 17 24 39 / 0.95;
+    --shadow-strong: 0 0 0 / 0.6;
+  }
+}
+
+/* Soften the swap without animating every property on every element. */
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    /* Background only: `color` is inherited, so animating it repaints every
+       descendant for 200ms while token-driven text swaps instantly. */
+    transition: background-color 200ms ease;
+  }
+}

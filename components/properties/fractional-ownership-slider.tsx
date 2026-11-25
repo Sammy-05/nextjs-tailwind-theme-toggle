@@ -111,7 +111,7 @@ export function FractionalOwnershipSlider({
             className={cn(
               'flex items-center gap-2 font-semibold',
               marketPriceStatus === 'live' && 'text-emerald-300',
-              marketPriceStatus === 'loading' && 'text-gray-400',
+              marketPriceStatus === 'loading' && 'text-content-muted',
               marketPriceStatus === 'fallback' && 'text-amber-300',
             )}
           >
@@ -120,15 +120,15 @@ export function FractionalOwnershipSlider({
               className={cn(
                 'h-1.5 w-1.5 shrink-0 rounded-full',
                 marketPriceStatus === 'live' && 'animate-pulse bg-emerald-400',
-                marketPriceStatus === 'loading' && 'bg-gray-500',
+                marketPriceStatus === 'loading' && 'bg-content-faint',
                 marketPriceStatus === 'fallback' && 'bg-amber-400',
               )}
             />
             <span className="truncate">{marketStatusCopy.label}</span>
           </p>
-          <p className="mt-1 text-[11px] text-gray-500">{marketStatusCopy.detail}</p>
+          <p className="mt-1 text-[11px] text-content-faint">{marketStatusCopy.detail}</p>
         </div>
-        <p className="shrink-0 font-mono text-sm font-bold text-white">
+        <p className="shrink-0 font-mono text-sm font-bold text-content">
           {usdFormatter.format(effectiveCryptoPrice)}
         </p>
       </div>
@@ -147,27 +147,27 @@ export function FractionalOwnershipSlider({
       {/* Stats grid */}
       <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
-          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-gray-500">
+          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-content-faint">
             Tokens
           </p>
-          <p className="mt-1 text-base font-bold text-white">{tokens}</p>
+          <p className="mt-1 text-base font-bold text-content">{tokens}</p>
         </div>
         <div>
-          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-gray-500">
+          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-content-faint">
             USD Value
           </p>
-          <p className="mt-1 text-base font-bold text-white">{usdFormatter.format(usdValue)}</p>
+          <p className="mt-1 text-base font-bold text-content">{usdFormatter.format(usdValue)}</p>
         </div>
         <div>
-          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-gray-500">
+          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-content-faint">
             {cryptoSymbol} Equivalent
           </p>
-          <p className="mt-1 text-base font-bold text-white">
+          <p className="mt-1 text-base font-bold text-content">
             {cryptoValue.toFixed(4)} {cryptoSymbol}
           </p>
         </div>
         <div>
-          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-gray-500">
+          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-content-faint">
             Ownership Percentage
           </p>
           <p className="mt-1 text-base font-bold text-emerald-300">
@@ -177,7 +177,7 @@ export function FractionalOwnershipSlider({
       </div>
 
       {/* Ownership progress */}
-      <div className="mt-6 h-1.5 overflow-hidden rounded-full bg-white/[0.08]">
+      <div className="mt-6 h-1.5 overflow-hidden rounded-full bg-ink/[0.08]">
         <div
           className="h-full rounded-full bg-gradient-to-r from-brand to-brand-soft transition-all duration-300 ease-in-out"
           style={{ width: `${ownershipPercentage}%` }}

@@ -63,7 +63,7 @@ export function WalletAction({ className }: WalletActionProps) {
       </Button>
 
       {inlineError ? (
-        <p role="alert" className="absolute right-0 top-10 w-52 text-right text-xs text-red-300">
+        <p role="alert" className="absolute right-0 top-10 w-52 text-right text-xs text-red-600 dark:text-red-300">
           {inlineError}
         </p>
       ) : null}

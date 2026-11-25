@@ -61,14 +61,39 @@ export default {
         success: {
           DEFAULT: '#10B981',
         },
-        // Surface tones (page backgrounds)
+        // Surface tones — theme-aware, see app/globals.css
         surface: {
-          base: '#0B1120',
-          elevated: '#0E172A',
+          base: 'rgb(var(--surface-base) / <alpha-value>)',
+          elevated: 'rgb(var(--surface-elevated) / <alpha-value>)',
+          overlay: 'rgb(var(--surface-overlay) / <alpha-value>)',
+          modal: 'rgb(var(--surface-modal) / <alpha-value>)',
         },
+        // Text tones, strongest to faintest
+        content: {
+          DEFAULT: 'rgb(var(--content) / <alpha-value>)',
+          bright: 'rgb(var(--content-bright) / <alpha-value>)',
+          secondary: 'rgb(var(--content-secondary) / <alpha-value>)',
+          tertiary: 'rgb(var(--content-tertiary) / <alpha-value>)',
+          muted: 'rgb(var(--content-muted) / <alpha-value>)',
+          faint: 'rgb(var(--content-faint) / <alpha-value>)',
+        },
+        // The theme's ink: hairlines, glass fills and focus rings use it at low alpha
+        ink: 'rgb(var(--ink) / <alpha-value>)',
+        // Pinned light: content sitting on a fixed-dark scrim
+        'on-media': 'rgb(var(--content-on-media) / <alpha-value>)',
+        // Alpha is baked into these, so they are used as bg-glass / bg-menu
+        glass: {
+          DEFAULT: 'rgb(var(--glass))',
+          hover: 'rgb(var(--glass-hover))',
+        },
+        menu: 'rgb(var(--menu-surface))',
+        track: 'rgb(var(--control-track) / <alpha-value>)',
       },
       fontFamily: {
         display: ['"Cormorant Garamond"', '"EB Garamond"', 'Georgia', '"Times New Roman"', 'serif'],
+      },
+      boxShadow: {
+        dropdown: '0 20px 40px -12px rgb(var(--shadow-strong))',
       },
       borderRadius: {
         lg: 'var(--radius)',

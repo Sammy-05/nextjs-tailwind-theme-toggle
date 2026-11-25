@@ -45,7 +45,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px] bg-gray-800/90 backdrop-blur-lg text-white border-gray-700">
+      <DialogContent className="sm:max-w-[425px] bg-surface-modal/90 backdrop-blur-lg text-content border-track">
         <DialogTitle className="text-2xl font-bold text-center">Sign In</DialogTitle>
         <DialogDescription className="sr-only">
           Sign in with a mock account to preview the investor experience.
@@ -53,14 +53,14 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
         <div className="grid gap-6">
           <div className="space-y-2 text-center">
-            <p className="text-gray-400">Choose your preferred sign in method</p>
+            <p className="text-content-muted">Choose your preferred sign in method</p>
           </div>
 
           <div className="space-y-4">
             <Button
               type="button"
               variant="outline"
-              className="w-full bg-white/5 border-gray-700 hover:bg-white/10 text-white space-x-2"
+              className="w-full bg-ink/5 border-track hover:bg-ink/10 text-content space-x-2"
               onClick={() => mockSignIn('demo@github.com')}
             >
               <Github className="h-5 w-5" />
@@ -69,7 +69,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
             <Button
               type="button"
               variant="outline"
-              className="w-full bg-white/5 border-gray-700 hover:bg-white/10 text-white space-x-2"
+              className="w-full bg-ink/5 border-track hover:bg-ink/10 text-content space-x-2"
               onClick={() => mockSignIn('demo@email.com')}
             >
               <Mail className="h-5 w-5" />
@@ -79,16 +79,16 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-gray-700" />
+              <span className="w-full border-t border-track" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-gray-800/90 px-2 text-gray-400">Or</span>
+              <span className="bg-surface-modal/90 px-2 text-content-muted">Or</span>
             </div>
           </div>
 
           <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-300">
+              <Label htmlFor="email" className="text-content-tertiary">
                 Email
               </Label>
               <Input
@@ -97,17 +97,17 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
                 type="email"
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? 'email-error' : undefined}
-                className="bg-white/5 border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-blue-500"
+                className="bg-ink/5 border-track text-content placeholder:text-content-faint focus-visible:ring-blue-500"
                 {...register('email')}
               />
               {errors.email ? (
-                <p id="email-error" role="alert" className="text-sm text-red-300">
+                <p id="email-error" role="alert" className="text-sm text-red-600 dark:text-red-300">
                   {errors.email.message}
                 </p>
               ) : null}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-gray-300">
+              <Label htmlFor="password" className="text-content-tertiary">
                 Password
               </Label>
               <Input
@@ -115,11 +115,11 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
                 type="password"
                 aria-invalid={Boolean(errors.password)}
                 aria-describedby={errors.password ? 'password-error' : undefined}
-                className="bg-white/5 border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-blue-500"
+                className="bg-ink/5 border-track text-content placeholder:text-content-faint focus-visible:ring-blue-500"
                 {...register('password')}
               />
               {errors.password ? (
-                <p id="password-error" role="alert" className="text-sm text-red-300">
+                <p id="password-error" role="alert" className="text-sm text-red-600 dark:text-red-300">
                   {errors.password.message}
                 </p>
               ) : null}
@@ -135,7 +135,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
             </a>
           </div>
 
-          <div className="text-center text-sm text-gray-400">
+          <div className="text-center text-sm text-content-muted">
             Don&apos;t have an account?{' '}
             <a href="#" className="text-brand hover:text-brand-hover">
               Sign up
